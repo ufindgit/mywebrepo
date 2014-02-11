@@ -21,7 +21,7 @@
     <action-mappings>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
         <action path="/register" type="jlactions.RegisterAction"
-                parameter="optype" name="regform">
+                parameter="optype" name="regform" scope="request">
         
           <forward name="regSuccess" path="/regSuccess.jsp"/>
         </action>
