@@ -7,6 +7,7 @@
 package jlactions;
 
 import form.RegistrationForm;
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import jldaos.MemberHibDAO;
@@ -33,8 +34,23 @@ public class RegisterAction extends DispatchAction{
          mem.setFname(reg.getFname());
          mem.setLname(reg.getLname());
          mem.setMname(reg.getMname());
+         mem.setPassword(reg.getPassword());
          dao.registerMember(mem);
          return mp.findForward("regSuccess");
+        
+    }
+    public ActionForward checkEmail(ActionMapping mp,ActionForm form,
+            HttpServletRequest req,HttpServletResponse res ) throws IOException{
+        RegistrationForm reg = (RegistrationForm)form;
+        MemberDAOI dao = new MemberHibDAO();
+        if(dao.isExisting(reg.getEmail())){
+            res.getOutputStream().print("existing");
+         }else{
+            res.getOutputStream().print("notexisting");
+        }
+        
+        
+        return null;
         
     }
     
