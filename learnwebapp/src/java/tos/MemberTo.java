@@ -11,12 +11,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Rishitha
  */
 @Entity
+@Table(name = "javalearners")
 public class MemberTo {
   
     @Id
@@ -26,6 +28,15 @@ public class MemberTo {
     private String mname;
     private String lname;
     private String email;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    private String password;
     
     public MemberTo(){
         
