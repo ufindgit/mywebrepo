@@ -16,6 +16,6 @@ import tos.MemberTo;
 public interface MemberDAOI {
     
      void registerMember(MemberTo mem);
-    
+     boolean isExisting(String email );
     
 }

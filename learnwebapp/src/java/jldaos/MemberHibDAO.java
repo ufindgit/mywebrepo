@@ -8,8 +8,11 @@ package jldaos;
 
 import form.RegistrationForm;
 import jldaos.MemberDAOI;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Restrictions;
 import tos.MemberTo;
 import utils.SessionFactoryUtil;
 
@@ -34,6 +37,22 @@ public class MemberHibDAO implements MemberDAOI {
             e.printStackTrace();
             
         }
+    }
+
+    public boolean isExisting(String email) {
+         
+        Session ses = SessionFactoryUtil.getSF().openSession();
+       
+         Criteria cri = ses.createCriteria(MemberTo.class);
+         cri.add(Expression.eq("email", email));
+         MemberTo mem =(MemberTo)cri.uniqueResult();
+         if(mem != null ){
+             return true;
+         }else{
+             return false;
+         }
+        
+    
     }
     
 }
