@@ -21,10 +21,18 @@ public class RegistrationForm extends ActionForm{
     String lname;
     String mname;
     String email;
-    
+    String password;
     
     public RegistrationForm(){
         
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFname() {
